@@ -3,9 +3,15 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { SplashScreen } from '@/components/splash-screen';
+import { ModularKitchenCaseStudy } from '@/components/case-studies/modular-kitchen';
+import { ThreeBHKCaseStudy } from '@/components/case-studies/three-bhk';
+import { FurnitureShowroomCaseStudy } from '@/components/case-studies/furniture-showroom';
+import { TropicalResidentialCaseStudy } from '@/components/case-studies/tropical-residential';
 
 const PortfolioPage = () => {
   const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [selectedCaseStudy, setSelectedCaseStudy] = useState<string | null>(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const skillsContainerRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -36,20 +42,21 @@ const PortfolioPage = () => {
     {
       id: 1,
       title: 'Furniture Showroom',
-      image: '/portfolio-furniture-showroom.jpg',
-      description: 'An elegant furniture showroom designed to showcase contemporary pieces in a curated environment. The space features teal accent walls, professional lighting to highlight each furniture collection, and a minimalist layout that allows pieces to speak for themselves. Clean lines and neutral flooring create the perfect backdrop for high-end furniture displays.',
+      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a9421c_6eb67fdbf32a443596012e50bc236919~mv2-oIdk9nObKeoeyJNwOaJwpHAHbPAzcE.jpeg',
+      description: 'A sophisticated furniture showroom with sculptural shell-like exterior, curated display zones, and elegant minimal aesthetic. Natural materials, soft lighting, and subtle detailing create a warm, inviting atmosphere.',
+      caseStudy: 'furniture-showroom',
       details: {
         client: 'Furniture Retailer',
         year: '2024',
         area: '3,000 sq ft',
         style: 'Modern Retail',
         highlights: [
-          'Professional display lighting',
-          'Teal accent walls',
-          'Open floor layout',
-          'Furniture arrangement',
-          'Customer journey flow',
-          'Ambient atmosphere'
+          'Shell-inspired curves',
+          'Curated display zones',
+          'Natural materials blend',
+          'Soft lighting design',
+          'Open spatial flow',
+          'Minimal aesthetic'
         ]
       }
     },
@@ -96,20 +103,21 @@ const PortfolioPage = () => {
     {
       id: 4,
       title: 'Modular Kitchen',
-      image: '/portfolio-modular-kitchen.jpg',
-      description: 'A custom modular kitchen design that maximizes functionality and style. Features white cabinetry with teal accents, premium stainless steel appliances, durable stone countertops, and intelligent storage solutions. The design emphasizes workflow efficiency while creating a beautiful, modern kitchen space.',
+      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a9421c_3f5a7f681b7a447fb853dc40b72784e3~mv2-HVZ99L7ORZxsTv7nklyanzmrRtxCms.png',
+      description: 'A sophisticated modular kitchen with minimal functional layout, clean lines, and muted green & white palette. Textured backsplash, open shelves, under-cabinet lighting, and built-in appliances ensure efficiency.',
+      caseStudy: 'modular-kitchen',
       details: {
         client: 'Residential Home',
         year: '2024',
         area: '250 sq ft',
         style: 'Modern Modular',
         highlights: [
-          'Custom cabinetry',
-          'Stainless appliances',
-          'Stone countertops',
-          'Smart storage',
-          'Functional layout',
-          'Modern aesthetic'
+          'Clean lines design',
+          'Green & white palette',
+          'Textured backsplash',
+          'Open shelving',
+          'Under-cabinet lighting',
+          'Built-in appliances'
         ]
       }
     },
@@ -135,21 +143,22 @@ const PortfolioPage = () => {
     },
     {
       id: 6,
-      title: '3 BHK',
-      image: '/portfolio-3bhk.jpg',
-      description: 'A luxurious 3-bedroom apartment showcasing contemporary living design. Open concept living area connects to a sophisticated kitchen, bedrooms feature custom built-ins, and bathrooms include premium finishes. The design emphasizes comfort, functionality, and timeless elegance throughout the entire home.',
+      title: '3 BHK Residential Home',
+      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a9421c_0d95916b85c6423ab192b21b742ac9d7~mv2-K1InBbFeLcKNlsvUkMfJb3TCbWvKj6.jpg',
+      description: 'Complete 2D design documentation with detailed floor plans, ceiling layouts, furniture arrangements, and comprehensive specifications for tropical-inspired residential living.',
+      caseStudy: 'three-bhk',
       details: {
         client: 'Residential Apartment',
         year: '2024',
         area: '1,400 sq ft',
         style: 'Luxury Contemporary',
         highlights: [
-          'Open concept living',
-          'Custom built-ins',
+          'Open concept design',
+          'Complete 2D documentation',
           'Master bedroom suite',
-          'Modern kitchen',
-          'Premium finishes',
-          'Family spaces'
+          'Kitchen integration',
+          'Material specifications',
+          'Lighting design'
         ]
       }
     },
@@ -196,20 +205,21 @@ const PortfolioPage = () => {
     {
       id: 9,
       title: 'Case Study',
-      image: '/portfolio-case-study.jpg',
-      description: 'A comprehensive project documentation showcasing the design process from concept to completion. Includes before and after transformations, design decisions, material specifications, and project outcomes. Demonstrates problem-solving, project management, and creative execution throughout the design journey.',
+      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/case_study1%20%2815%29-N6XLEJPEmKWBgrFuJL48okvmFReuah.png',
+      description: 'A serene, tropical-inspired residential design blending nature with built spaces. This modern-classical bungalow in Mangalore features open living concepts, heritage design elements, and contemporary lifestyle accommodation.',
+      caseStudy: 'tropical-residential',
       details: {
-        client: 'Project Showcase',
+        client: 'Private Residential',
         year: '2024',
-        area: 'Documentation',
-        style: 'Design Process',
+        area: '5,250 sq ft',
+        style: 'Modern Classical',
         highlights: [
-          'Before & after',
-          'Design process',
-          'Material selection',
-          'Timeline management',
-          'Client satisfaction',
-          'Project results'
+          'Tropical design philosophy',
+          'Heritage elements',
+          'Open floor plans',
+          'Natural light focus',
+          'Traditional Chettinad architecture',
+          'Contemporary living spaces'
         ]
       }
     }
@@ -237,6 +247,9 @@ const PortfolioPage = () => {
         backgroundSize: 'cover'
       }}
     >
+      {/* Splash Screen */}
+      <SplashScreen />
+      
       {/* Background Overlay */}
       <div className="fixed inset-0 bg-background/85 pointer-events-none" style={{ zIndex: 1 }} />
       
@@ -246,21 +259,21 @@ const PortfolioPage = () => {
           <div className="flex items-center space-x-3 animate-fade-in-down">
             <div className="w-10 h-10">
               <svg viewBox="0 0 100 100" className="w-full h-full animate-rotate-slow">
+                <defs>
+                  <linearGradient id="diamondGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#d4549a" />
+                    <stop offset="100%" stopColor="#c9a046" />
+                  </linearGradient>
+                </defs>
                 <g fill="url(#diamondGradient)">
                   <polygon points="30,30 45,15 60,30 45,45" />
                   <polygon points="55,30 70,15 85,30 70,45" />
                   <polygon points="30,55 45,40 60,55 45,70" />
                   <polygon points="55,55 70,40 85,55 70,70" />
                 </g>
-                <defs>
-                  <linearGradient id="diamondGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{ stopColor: '#1a4d4d' }} />
-                    <stop offset="100%" style={{ stopColor: '#2d7a7a' }} />
-                  </linearGradient>
-                </defs>
               </svg>
             </div>
-            <span className="font-serif text-xl font-bold text-primary">Srestha Jyoti</span>
+            <span className="font-serif text-xl font-bold text-gradient">Srestha Jyoti</span>
           </div>
 
           <div className="flex items-center space-x-8 md:space-x-12">
@@ -288,7 +301,11 @@ const PortfolioPage = () => {
                     <button
                       key={item.id}
                       onClick={() => {
-                        setSelectedProject(item);
+                        if (item.caseStudy) {
+                          window.location.href = `/projects?id=${item.caseStudy}`;
+                        } else {
+                          setSelectedProject(item);
+                        }
                         setShowPortfolioMenu(false);
                       }}
                       className="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-primary-foreground transition-colors duration-200 border-b border-border last:border-b-0 hover:translate-x-1 duration-200"
@@ -423,7 +440,13 @@ const PortfolioPage = () => {
             {allPortfolioItems.map((project, index) => (
               <div
                 key={project.id}
-                onClick={() => setSelectedProject(project)}
+                onClick={() => {
+                  if (project.caseStudy) {
+                    window.location.href = `/projects?id=${project.caseStudy}`;
+                  } else {
+                    setSelectedProject(project);
+                  }
+                }}
                 className="card-hover rounded-xl overflow-hidden cursor-pointer group"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
@@ -516,7 +539,13 @@ const PortfolioPage = () => {
             <div className="flex items-center space-x-4 md:space-x-6 flex-shrink-0">
               <div className="w-16 h-16 md:w-20 md:h-20">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
-                  <g fill="#1a4d4d">
+                  <defs>
+                    <linearGradient id="contactGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#d4549a" />
+                      <stop offset="100%" stopColor="#c9a046" />
+                    </linearGradient>
+                  </defs>
+                  <g fill="url(#contactGrad)">
                     <polygon points="30,30 45,15 60,30 45,45" />
                     <polygon points="55,30 70,15 85,30 70,45" />
                     <polygon points="30,55 45,40 60,55 45,70" />
@@ -555,8 +584,31 @@ const PortfolioPage = () => {
         </div>
       </section>
 
+      {/* Case Study Modal */}
+      {selectedCaseStudy && (
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-start justify-center p-4 overflow-y-auto modal-backdrop pt-20">
+          <div className="bg-card rounded-2xl max-w-6xl w-full modal-content case-study-modal border border-border p-8 md:p-12 my-20">
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedCaseStudy(null)}
+              className="absolute top-4 right-4 p-2 bg-muted rounded-full hover:bg-primary hover:text-primary-foreground transition-all z-10"
+            >
+              <X size={24} />
+            </button>
+
+            {/* Case Study Content */}
+            <div className="space-y-8">
+              {selectedCaseStudy === 'modular-kitchen' && <ModularKitchenCaseStudy />}
+              {selectedCaseStudy === 'three-bhk' && <ThreeBHKCaseStudy />}
+              {selectedCaseStudy === 'furniture-showroom' && <FurnitureShowroomCaseStudy />}
+              {selectedCaseStudy === 'tropical-residential' && <TropicalResidentialCaseStudy />}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Project Modal */}
-      {selectedProject && (
+      {selectedProject && !selectedCaseStudy && (
         <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 modal-backdrop">
           <div className="bg-card rounded-2xl max-w-3xl w-full max-h-96 overflow-y-auto modal-content border border-border">
             {/* Close Button */}

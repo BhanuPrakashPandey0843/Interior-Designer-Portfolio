@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <defs>
+    <linearGradient id="sjGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#d4549a"/>
+      <stop offset="100%" stopColor="#c9a046"/>
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" fill="#faf8f3" rx="45"/>
+  <text x="96" y="130" font-family="Georgia, serif" font-size="100" font-weight="900" fill="url(#sjGrad)" text-anchor="middle" letter-spacing="-3">SJ</text>
+</svg>
