@@ -58,10 +58,7 @@ export const FurnitureDesignGallery = () => {
           Bespoke Furniture Design
         </h2>
         <p className="text-sm sm:text-base opacity-80 max-w-2xl leading-relaxed">
-          A curated collection of custom furniture pieces crafted for private clients.
-          Each work harmonises material expertise, precise joinery, and considered
-          aesthetics into a cohesive interior narrative — where every piece earns
-          its place in the space.
+          The furniture showroom features a sculptural shell-like exterior that draws visitors into a calm, open interior.The layout is thoughtfully organized into curated zones, allowing each furniture piece to be experienced in a realistic, setting. Natural materials, soft lighting, and subtle detailing create a warm and minimal atmosphere, balancing functionality with quiet visual appeal. The space is designed to feel open, making the showroom both inviting and easy to navigate.
         </p>
 
         {/* Tags */}
