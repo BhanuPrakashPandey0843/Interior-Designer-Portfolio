@@ -1,35 +1,31 @@
-# srestha-jyoti
+ use this contact number ehre ever this is required 7033661527
+ add linkedin where ever reuired this is the linked in profile  you should add 
+just below the name there is this text Interior Designer | Visual Strategist  beside it add | Design Consultant
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+ make the website more resposnive and better add animations make it perfcet and improve the ui ux also 
 
-## Built with v0
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+only this projects must be there reomve otheres also improve the ui ux animation and add microanimations 
+  Furniture showroom
+   3 bhk
+   furniture design for this use this images here on whatsapp
+  Modular kitchen
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_kzkyUWBqPhr4z2rPEvk2ZxF5aNZz)
+  Case study
 
-## Getting Started
+sequence of the projects 
+ 
 
-First, run the development server:
+ https://www.linkedin.com/in/srestha-jyoti-295b71218/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+ currently the website is in a pink color use a premium green color i want a modern premium website no cheap ui ux color premium good quaity sooth and a effective detailed portpholio that attracts every one its for interiour deziner so detailing should be done proeprly and effectively
 
-## Learn More
 
-To learn more, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
 
-<a href="https://v0.app/chat/api/kiro/clone/22051454-max/srestha-jyoti" alt="Open in Kiro"><img src="https://pdgvvgmkdvyeydso.public.blob.vercel-storage.com/open%20in%20kiro.svg?sanitize=true" /></a>
+
+
+
+ 

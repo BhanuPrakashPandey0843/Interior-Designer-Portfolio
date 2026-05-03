@@ -2,12 +2,13 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight, X, Menu } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X, Menu, Linkedin, Phone } from 'lucide-react';
 import { SplashScreen } from '@/components/splash-screen';
 import { ModularKitchenCaseStudy } from '@/components/case-studies/modular-kitchen';
 import { ThreeBHKCaseStudy } from '@/components/case-studies/three-bhk';
 import { FurnitureShowroomCaseStudy } from '@/components/case-studies/furniture-showroom';
 import { TropicalResidentialCaseStudy } from '@/components/case-studies/tropical-residential';
+import { FurnitureDesignGallery } from '@/components/case-studies/furniture-design';
 
 const PortfolioPage = () => {
   const [selectedProject, setSelectedProject] = useState<any>(null);
@@ -41,6 +42,24 @@ const PortfolioPage = () => {
       return () => window.removeEventListener('keydown', handleKeyDown);
     }
   }, [fullscreenImage]);
+
+  // Scroll reveal with IntersectionObserver
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    );
+    const elements = document.querySelectorAll('.reveal-item, .scroll-reveal, .card-hover.rounded-lg');
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   const scrollSkills = (direction: 'left' | 'right') => {
     if (skillsContainerRef.current) {
@@ -77,87 +96,6 @@ const PortfolioPage = () => {
       }
     },
     {
-      id: 2,
-      title: 'Studio Vertias',
-      image: '/portfolio-studio-vertias.jpg',
-      description: 'A creative studio space designed for artists and designers to work collaboratively. Features natural light from large windows, exposed brick for character, flexible workspace arrangements, and a color palette that inspires creativity. The studio balances functionality with an inspiring aesthetic that promotes innovative thinking.',
-      details: {
-        client: 'Creative Studio',
-        year: '2024',
-        area: '2,000 sq ft',
-        style: 'Contemporary Creative',
-        highlights: [
-          'Natural lighting',
-          'Flexible workspaces',
-          'Exposed brick walls',
-          'Inspiration boards',
-          'Breakout areas',
-          'Equipment storage'
-        ]
-      }
-    },
-    {
-      id: 3,
-      title: 'Office Design',
-      image: '/portfolio-office-design.jpg',
-      description: 'A sophisticated corporate office that balances professionalism with employee wellness. Features dedicated meeting rooms with glass walls for collaboration, ergonomic workspace design, and a sophisticated teal and white color scheme. The layout promotes productivity while maintaining a welcoming, modern aesthetic.',
-      details: {
-        client: 'Corporate Office',
-        year: '2024',
-        area: '4,500 sq ft',
-        style: 'Executive Corporate',
-        highlights: [
-          'Private meeting rooms',
-          'Ergonomic workstations',
-          'Executive office',
-          'Collaborative spaces',
-          'Natural lighting',
-          'Professional aesthetics'
-        ]
-      }
-    },
-    {
-      id: 4,
-      title: 'Modular Kitchen',
-      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a9421c_3f5a7f681b7a447fb853dc40b72784e3~mv2-HVZ99L7ORZxsTv7nklyanzmrRtxCms.png',
-      description: 'A sophisticated modular kitchen with minimal functional layout, clean lines, and muted green & white palette. Textured backsplash, open shelves, under-cabinet lighting, and built-in appliances ensure efficiency.',
-      caseStudy: 'modular-kitchen',
-      details: {
-        client: 'Residential Home',
-        year: '2024',
-        area: '250 sq ft',
-        style: 'Modern Modular',
-        highlights: [
-          'Clean lines design',
-          'Green & white palette',
-          'Textured backsplash',
-          'Open shelving',
-          'Under-cabinet lighting',
-          'Built-in appliances'
-        ]
-      }
-    },
-    {
-      id: 5,
-      title: 'Co-working Office',
-      image: '/portfolio-coworking-office.jpg',
-      description: 'A vibrant co-working space designed to foster collaboration and innovation. Features hot desks, private pods for focused work, open meeting areas, and a color scheme that energizes without overwhelming. The space supports diverse work styles while maintaining a cohesive, professional environment.',
-      details: {
-        client: 'Co-working Space',
-        year: '2024',
-        area: '6,000 sq ft',
-        style: 'Collaborative Modern',
-        highlights: [
-          'Hot desk areas',
-          'Private work pods',
-          'Meeting rooms',
-          'Breakout spaces',
-          'Community zones',
-          'Tech integration'
-        ]
-      }
-    },
-    {
       id: 6,
       title: '3 BHK Residential Home',
       image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a9421c_0d95916b85c6423ab192b21b742ac9d7~mv2-K1InBbFeLcKNlsvUkMfJb3TCbWvKj6.jpg',
@@ -179,42 +117,44 @@ const PortfolioPage = () => {
       }
     },
     {
-      id: 7,
-      title: 'Illustrator Work',
-      image: '/portfolio-illustrator.jpg',
-      description: 'A comprehensive collection of digital illustrations and graphic designs. Showcasing vector artwork, visual identities, and creative concepts in a portfolio presentation. The work demonstrates skill in visual storytelling, design thinking, and creative execution across various mediums and styles.',
+      id: 2,
+      title: 'Furniture Design',
+      image: '/furniture/one.jpeg',
+      description: 'Bespoke furniture design crafted with precision, showcasing the harmony of form and function. Each piece balances material expertise with spatial awareness to deliver timeless, liveable results.',
+      caseStudy: 'furniture-design',
       details: {
-        client: 'Graphic Design Portfolio',
+        client: 'Private Client',
         year: '2024',
-        area: 'Digital',
-        style: 'Graphic Design',
+        area: 'Custom Pieces',
+        style: 'Contemporary Furniture',
         highlights: [
-          'Vector illustrations',
-          'Brand identity',
-          'Creative concepts',
-          'Visual storytelling',
-          'Digital art',
-          'Design thinking'
+          'Custom joinery',
+          'Material selection',
+          'Spatial harmony',
+          'Functional elegance',
+          'Handcrafted details',
+          'Client collaboration'
         ]
       }
     },
     {
-      id: 8,
-      title: 'Blender Models',
-      image: '/portfolio-blender-models.jpg',
-      description: 'Professional 3D visualization and modeling work created in Blender. Features architectural renderings, furniture designs, and spatial visualizations that bring concepts to life. High-quality renders demonstrate lighting expertise, material design, and attention to photorealistic detail.',
+      id: 4,
+      title: 'Modular Kitchen',
+      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a9421c_3f5a7f681b7a447fb853dc40b72784e3~mv2-HVZ99L7ORZxsTv7nklyanzmrRtxCms.png',
+      description: 'A sophisticated modular kitchen with minimal functional layout, clean lines, and muted green & white palette. Textured backsplash, open shelves, under-cabinet lighting, and built-in appliances ensure efficiency.',
+      caseStudy: 'modular-kitchen',
       details: {
-        client: '3D Visualization',
+        client: 'Residential Home',
         year: '2024',
-        area: '3D Renders',
-        style: '3D Modeling',
+        area: '250 sq ft',
+        style: 'Modern Modular',
         highlights: [
-          'Architectural renders',
-          'Furniture models',
-          'Material design',
-          'Lighting setup',
-          'Animation ready',
-          'Photorealistic'
+          'Clean lines design',
+          'Green & white palette',
+          'Textured backsplash',
+          'Open shelving',
+          'Under-cabinet lighting',
+          'Built-in appliances'
         ]
       }
     },
@@ -242,14 +182,11 @@ const PortfolioPage = () => {
   ];
 
   const skills = [
-    { name: 'Figma', icon: '🎨' },
-    { name: 'Adobe Photoshop', icon: '📷' },
-    { name: 'Adobe Illustrator', icon: '✏️' },
-    { name: 'After Effects', icon: '🎬' },
-    { name: 'SketchUp', icon: '📐' },
     { name: 'AutoCAD', icon: '📏' },
-    { name: '3D Max', icon: '🎲' },
-    { name: 'Blender', icon: '🎭' },
+    { name: 'SketchUp', icon: '📐' },
+    { name: 'V-Ray', icon: '✨' },
+    { name: 'Adobe Illustrator', icon: '✏️' },
+    { name: 'Adobe Photoshop', icon: '📷' },
   ];
 
   return (
@@ -401,9 +338,19 @@ const PortfolioPage = () => {
                 <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold mb-2 sm:mb-4 text-gradient animate-fade-in-up break-words">
                   Srestha Jyoti
                 </h1>
-                <p className="text-base sm:text-xl md:text-2xl text-primary font-medium mb-3 sm:mb-6 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                  Interior Designer | Visual Strategist
+                <p className="text-base sm:text-xl md:text-2xl text-primary font-medium mb-2 sm:mb-3 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                  Interior Designer | Visual Strategist | Design Consultant
                 </p>
+                <a
+                  href="https://www.linkedin.com/in/srestha-jyoti-295b71218/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm text-muted-foreground hover:text-primary transition-all duration-300 group animate-fade-in-up mb-1 hover:-translate-y-0.5"
+                  style={{ animationDelay: '0.15s' }}
+                >
+                  <Linkedin size={14} className="group-hover:scale-125 transition-transform duration-200" />
+                  <span className="group-hover:underline underline-offset-2">linkedin.com/in/srestha-jyoti</span>
+                </a>
               </div>
 
               <p className="text-sm sm:text-lg leading-relaxed opacity-90 animate-fade-in-up max-w-lg" style={{ animationDelay: '0.2s' }}>
@@ -450,7 +397,7 @@ const PortfolioPage = () => {
       {/* Software Skills Section */}
       <section className="py-12 sm:py-20 bg-muted/20 relative z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-center mb-8 sm:mb-16 uppercase tracking-wider smooth-slide-up">
+          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-center mb-8 sm:mb-16 uppercase tracking-wider scroll-reveal">
             Software Skills
           </h2>
 
@@ -503,7 +450,7 @@ const PortfolioPage = () => {
       {/* Portfolio Section */}
       <section className="py-12 sm:py-24 bg-background relative z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-center mb-8 sm:mb-16 uppercase tracking-wider smooth-slide-up">
+          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-center mb-8 sm:mb-16 uppercase tracking-wider scroll-reveal">
             Portfolio Projects
           </h2>
 
@@ -518,8 +465,8 @@ const PortfolioPage = () => {
                     setSelectedProject(project);
                   }
                 }}
-                className="card-hover rounded-xl overflow-hidden cursor-pointer group h-full flex flex-col"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="card-hover reveal-item rounded-xl overflow-hidden cursor-pointer group h-full flex flex-col"
+                style={{ transitionDelay: `${index * 0.12}s` }}
               >
                 <div className="relative h-40 sm:h-64 overflow-hidden bg-muted flex-shrink-0 cursor-pointer"
                   onClick={(e) => {
@@ -554,7 +501,7 @@ const PortfolioPage = () => {
       {/* Certificates Section */}
       <section id="certificates" className="py-12 sm:py-20 bg-muted/20 relative z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-center mb-8 sm:mb-16 uppercase tracking-wider smooth-slide-up">
+          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-center mb-8 sm:mb-16 uppercase tracking-wider scroll-reveal">
             Certifications & Awards
           </h2>
 
@@ -665,9 +612,23 @@ const PortfolioPage = () => {
                   sresthajyoti@gmail.com
                 </a>
               </p>
-              <p className="text-xs sm:text-lg">
+              <p className="text-xs sm:text-lg mb-2 sm:mb-3">
                 <span className="text-foreground font-medium">Phone: </span>
-                <span className="text-primary font-medium text-xs sm:text-base">Available upon request</span>
+                <a href="tel:+917033661527" className="text-primary font-medium text-xs sm:text-base hover:text-accent transition-colors">
+                  +91 7033661527
+                </a>
+              </p>
+              <p className="text-xs sm:text-lg">
+                <span className="text-foreground font-medium">LinkedIn: </span>
+                <a
+                  href="https://www.linkedin.com/in/srestha-jyoti-295b71218/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary font-medium text-xs sm:text-base hover:text-accent transition-colors inline-flex items-center gap-1.5 group"
+                >
+                  <Linkedin size={13} className="group-hover:scale-110 transition-transform" />
+                  <span className="group-hover:underline underline-offset-2">srestha-jyoti-295b71218</span>
+                </a>
               </p>
             </div>
           </div>
@@ -693,6 +654,7 @@ const PortfolioPage = () => {
               {selectedCaseStudy === 'three-bhk' && <ThreeBHKCaseStudy />}
               {selectedCaseStudy === 'furniture-showroom' && <FurnitureShowroomCaseStudy />}
               {selectedCaseStudy === 'tropical-residential' && <TropicalResidentialCaseStudy />}
+              {selectedCaseStudy === 'furniture-design' && <FurnitureDesignGallery />}
             </div>
           </div>
         </div>

@@ -593,7 +593,14 @@ html {
 }
 
 .smooth-slide-up {
-  animation: smoothSlideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.smooth-slide-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .smooth-slide-down {
@@ -602,6 +609,32 @@ html {
 
 .smooth-scale {
   animation: smoothScale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* =============================================
+   SCROLL REVEAL
+   ============================================= */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.75s ease, transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.scroll-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-item {
+  opacity: 0;
+  transform: translateY(28px) scale(0.97);
+  transition: opacity 0.6s ease, transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+}
+.reveal-item.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.reveal-item.in-view:hover {
+  transform: translateY(-8px) scale(1.02) !important;
 }
 
 .gentle-float {
@@ -753,4 +786,111 @@ body {
 
 .case-study-link:hover {
   animation: linkHoverGlow 1.5s ease-in-out infinite;
+}
+
+/* =============================================
+   MICRO-ANIMATIONS & ENHANCED UI
+   ============================================= */
+
+/* Animated gradient name */
+@keyframes gradientPan {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.text-gradient {
+  background: linear-gradient(135deg, #d4549a 0%, #c9a046 50%, #d4549a 100%);
+  background-size: 250% 250%;
+  animation: gradientPan 6s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Nav underline micro-animation */
+nav a {
+  position: relative;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #d4549a, #c9a046);
+  transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 2px;
+}
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Dropdown slide-in items */
+@keyframes itemFadeIn {
+  from { opacity: 0; transform: translateX(-6px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-slide-in-down button {
+  animation: itemFadeIn 0.18s ease forwards;
+}
+
+/* Skill icon micro-bounce */
+@keyframes microBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  35% { transform: translateY(-6px) scale(1.08); }
+  65% { transform: translateY(-3px) scale(1.04); }
+}
+.animate-float-slow > div:hover {
+  animation: microBounce 0.55s ease;
+}
+
+/* Image hover */
+.group img {
+  transition: filter 0.4s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.group:hover img {
+  filter: brightness(1.04) saturate(1.05);
+}
+
+/* Better scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--muted); border-radius: 10px; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #d4549a, #c9a046);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: #d4549a; }
+
+/* Focus ring */
+button:focus-visible, a:focus-visible {
+  outline: 2px solid #d4549a;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Mobile active tap */
+@media (hover: none) {
+  .card-hover:active { transform: scale(0.97); transition: transform 0.12s ease; }
+  .hover-lift:active { transform: translateY(-3px); }
+}
+
+/* Certificate / large card reveal */
+.card-hover.rounded-lg {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+}
+.card-hover.rounded-lg.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+.card-hover.rounded-lg:hover {
+  box-shadow: 0 0 0 1px rgba(212, 84, 154, 0.25), 0 20px 50px rgba(212, 84, 154, 0.18);
+  transform: translateY(-6px) !important;
+}
+
+/* Link shimmer on hover */
+a[href='#certificates']:hover,
+a[href='#contact']:hover {
+  box-shadow: 0 4px 20px rgba(212, 84, 154, 0.35);
 }
