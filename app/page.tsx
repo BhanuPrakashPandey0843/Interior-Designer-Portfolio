@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight, X, Menu, Linkedin, Phone, DraftingCompass, Building, Zap, PenTool, ImageIcon, Presentation, Palette } from 'lucide-react';
+import { ChevronRight, X, Menu, Linkedin, Phone, DraftingCompass, Building, Zap, PenTool, ImageIcon, Presentation, Palette } from 'lucide-react';
 import { SplashScreen } from '@/components/splash-screen';
 import { ModularKitchenCaseStudy } from '@/components/case-studies/modular-kitchen';
 import { ThreeBHKCaseStudy } from '@/components/case-studies/three-bhk';
@@ -23,8 +23,6 @@ const skills = [
 const PortfolioPage = () => {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<string | null>(null);
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const skillsContainerRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [showPortfolioMenu, setShowPortfolioMenu] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -65,23 +63,12 @@ const PortfolioPage = () => {
     return () => observer.disconnect();
   }, []);
 
-  const scrollSkills = (direction: 'left' | 'right') => {
-    if (skillsContainerRef.current) {
-      const scrollAmount = 300;
-      const newPosition = direction === 'left'
-        ? scrollPosition - scrollAmount
-        : scrollPosition + scrollAmount;
-      skillsContainerRef.current.scrollLeft = newPosition;
-      setScrollPosition(newPosition);
-    }
-  };
-
   const allPortfolioItems = [
     {
       id: 1,
       title: 'Furniture Showroom',
-      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a9421c_6eb67fdbf32a443596012e50bc236919~mv2-oIdk9nObKeoeyJNwOaJwpHAHbPAzcE.jpeg',
-      description: 'A sophisticated furniture showroom with sculptural shell-like exterior, curated display zones, and elegant minimal aesthetic. Natural materials, soft lighting, and subtle detailing create a warm, inviting atmosphere.',
+      image: '/furniture/one.png',
+      description: 'A sophisticated furniture showroom with sculptural shell-like exterior and curated display zones. Natural materials, soft lighting, and subtle detailing create a warm and minimal atmosphere balancing functionality with quiet visual appeal.',
       caseStudy: 'furniture-showroom',
       details: {
         client: 'Furniture Retailer',
@@ -336,33 +323,18 @@ const PortfolioPage = () => {
             Software Skills
           </h2>
 
-          <div className="relative flex items-center justify-center">
-            <button
-              onClick={() => scrollSkills('left')}
-              className="absolute left-0 z-20 p-2 sm:p-3 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 hidden sm:flex flex-shrink-0 shadow-sm hover:shadow-md"
-              aria-label="Scroll left"
-            >
-              <ChevronLeft size={20} />
-            </button>
-
-            <div
-              ref={skillsContainerRef}
-              className="flex gap-8 sm:gap-12 overflow-x-auto scroll-smooth px-4 sm:px-24 py-8 sm:py-10 w-full justify-start sm:justify-center scrollbar-hide"
-            >
-              {skills.map((skill, index) => (
+          <div className="skills-marquee-track">
+            <div className="skills-marquee flex gap-10 sm:gap-16 py-8 sm:py-10" style={{ width: 'max-content' }}>
+              {[...skills, ...skills].map((skill, index) => (
                 <div
-                  key={skill.name}
-                  className="flex-shrink-0 flex flex-col items-center group animate-slide-in-up"
-                  style={{
-                    animationDelay: `${index * 0.15}s`
-                  }}
+                  key={`${skill.name}-${index}`}
+                  className="flex-shrink-0 flex flex-col items-center group"
                 >
-                  {/* Professional icon container */}
                   <div
-                    className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-card to-card/80 rounded-xl border border-border/50 flex items-center justify-center shadow-sm hover:shadow-lg transition-all duration-300 hover:border-primary/30 cursor-pointer backdrop-blur-sm"
+                    className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-card to-card/80 rounded-xl border border-border/50 flex items-center justify-center shadow-sm hover:shadow-lg transition-all duration-300 hover:border-primary/30 backdrop-blur-sm"
                     style={{ color: skill.color }}
                   >
-                    <skill.Icon size={36} className="drop-shadow-sm" />
+                    <skill.Icon size={36} className="drop-shadow-sm transition-transform duration-300 group-hover:scale-110" />
                   </div>
                   <p className="text-center text-xs sm:text-sm font-medium mt-3 group-hover:text-primary transition-colors duration-300 w-[68px] sm:w-[88px] leading-tight">
                     {skill.name}
@@ -370,14 +342,6 @@ const PortfolioPage = () => {
                 </div>
               ))}
             </div>
-
-            <button
-              onClick={() => scrollSkills('right')}
-              className="absolute right-0 z-20 p-2 sm:p-3 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 hidden sm:flex flex-shrink-0 shadow-sm hover:shadow-md"
-              aria-label="Scroll right"
-            >
-              <ChevronRight size={20} />
-            </button>
           </div>
         </div>
       </section>

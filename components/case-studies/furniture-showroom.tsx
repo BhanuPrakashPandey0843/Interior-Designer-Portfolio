@@ -1,342 +1,330 @@
 'use client';
 
-import { ImageViewer } from '@/components/image-viewer';
+import { useState } from 'react';
+import { X } from 'lucide-react';
 
 export function FurnitureShowroomCaseStudy() {
-  const designElements = [
-    {
-      title: 'Shell-Inspired Curves',
-      description: 'The sculptural exterior draws visitors in with organic, flowing forms that create visual interest and architectural distinction.'
-    },
-    {
-      title: 'Curated Display Zones',
-      description: 'Each furniture collection is placed in thoughtfully designed zones, allowing pieces to be experienced in realistic settings.'
-    },
-    {
-      title: 'Natural Materials',
-      description: 'Wood, metal, fabric, and stone blend seamlessly to create an elegant and fluid showroom concept.'
-    },
-    {
-      title: 'Soft Lighting Design',
-      description: 'Strategic lighting highlights each furniture piece and creates a warm, welcoming ambiance throughout the space.'
-    },
-    {
-      title: 'Open Spatial Flow',
-      description: 'The design emphasizes openness, making the showroom both inviting and easy to navigate for visitors.'
-    },
-    {
-      title: 'Minimal Aesthetic',
-      description: 'Clean lines and neutral finishes provide the perfect backdrop for high-end furniture displays and product showcase.'
-    }
-  ];
+  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
+
+  const openImage = (src: string) => setFullscreenImage(src);
+  const closeImage = () => setFullscreenImage(null);
 
   return (
     <div className="w-full space-y-20 animate-fade-in-up">
-      {/* Header */}
-      <div className="text-center space-y-4">
-        <h1 className="font-serif text-5xl md:text-6xl font-bold text-gradient mb-4">
+
+      {/* ── Header ─────────────────────────────────────────────── */}
+      <div className="text-center space-y-5">
+        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-gradient">
           Furniture Showroom
         </h1>
-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-          A sophisticated showroom design featuring a sculptural shell-like exterior and curated interior zones showcasing contemporary furniture in an elegant, minimal aesthetic.
+        <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          The furniture showroom features a sculptural shell-like exterior that draws visitors into
+          a calm, open interior. The layout is thoughtfully organized into curated zones, allowing
+          each furniture piece to be experienced in a realistic setting. Natural materials, soft
+          lighting, and subtle detailing create a warm and minimal atmosphere, balancing
+          functionality with quiet visual appeal. The space is designed to feel open, making the
+          showroom both inviting and easy to navigate.
         </p>
       </div>
 
-      {/* Design Philosophy */}
-      <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-8 md:p-12 space-y-4">
-        <h2 className="font-serif text-2xl font-bold">Design Philosophy</h2>
-        <p className="text-base leading-relaxed">
-          The furniture showroom features a sculptural shell-like exterior that draws visitors into a calm, open interior. The layout is thoughtfully organized into curated zones, allowing each furniture piece to be experienced in a realistic setting. Natural materials, soft lighting, and subtle detailing create a warm and minimal atmosphere, balancing functionality with quiet visual appeal. The space is designed to feel open, making the showroom both inviting and easy to navigate.
-        </p>
-      </div>
+      {/* ── DESIGN PROCESS ─────────────────────────────────────── */}
+      <div className="space-y-16">
+        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-center uppercase tracking-widest text-gradient">
+          Design Process
+        </h2>
 
-      {/* Main Image */}
-      <div className="relative h-96 md:h-[600px] rounded-2xl overflow-hidden group">
-        <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a9421c_6eb67fdbf32a443596012e50bc236919~mv2-oIdk9nObKeoeyJNwOaJwpHAHbPAzcE.jpeg"
-          alt="Furniture Showroom Mood Board"
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-      </div>
+        {/* ── 1. MoodBoard ──────────────────────────────────────── */}
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
+              <span className="text-white font-bold text-sm">1</span>
+            </div>
+            <h3 className="font-serif text-xl sm:text-2xl font-bold">MoodBoard</h3>
+          </div>
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed pl-12">
+            This highlights soft, shell-inspired curves and a blend of materials like wood, metal,
+            fabric, and stone, creating an elegant and fluid showroom concept.
+          </p>
 
-      {/* Design Elements Grid */}
-      <div className="space-y-12">
-        <h2 className="font-serif text-3xl font-bold text-center">Key Design Elements</h2>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {designElements.map((element, index) => (
-            <div
-              key={index}
-              className="group border border-border rounded-lg p-6 hover:border-primary hover:shadow-lg transition-all duration-300 hover:bg-primary/5"
-            >
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-lg">{index + 1}</span>
+          {/* Full-width mood board image */}
+          <div
+            className="relative rounded-2xl overflow-hidden cursor-pointer group"
+            style={{ height: 'clamp(260px, 55vw, 560px)' }}
+            onClick={() => openImage('/furniture/one.png')}
+          >
+            <img
+              src="/furniture/one.png"
+              alt="Furniture Showroom MoodBoard"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            <div className="absolute inset-0 flex items-end p-5 sm:p-8">
+              <span className="text-white/80 text-xs sm:text-sm font-medium bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                MoodBoard — click to expand
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* ── 2. Furniture Layout ───────────────────────────────── */}
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
+              <span className="text-white font-bold text-sm">2</span>
+            </div>
+            <h3 className="font-serif text-xl sm:text-2xl font-bold">Furniture Layout</h3>
+          </div>
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed pl-12">
+            Furniture layout designed for clarity, comfort, and efficient use of space, enhancing
+            both function and flow.
+          </p>
+
+          {/* 3-image grid with captions */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-6">
+            {[
+              { src: '/furniture/two.png',   alt: 'Furniture Layout Plan 1', caption: '2D AutoCAD Floor Plan of the Showroom' },
+              { src: '/furniture/three.png', alt: 'Furniture Layout Plan 2', caption: '2D Hatched Floor Plan of the Showroom' },
+              { src: '/furniture/four.jpg',  alt: 'Furniture Layout Plan 3', caption: '3D View of the Floor Plan of the Showroom' },
+            ].map((img, i) => (
+              <div key={i} className="space-y-3">
+                <div
+                  className="relative rounded-xl overflow-hidden cursor-pointer group"
+                  style={{ height: 'clamp(180px, 28vw, 320px)' }}
+                  onClick={() => openImage(img.src)}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-full object-cover transition-transform duration-500"
+                    style={{ transform: 'scale(1)', transition: 'transform 0.5s ease' }}
+                    onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.07)')}
+                    onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/35 transition-colors" />
+                  <div className="absolute inset-0 flex items-end p-3">
+                    <span className="text-white/70 text-xs bg-black/25 backdrop-blur-sm px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                      View full →
+                    </span>
+                  </div>
                 </div>
-                <h3 className="font-semibold text-lg group-hover:text-primary transition-colors mt-1">
-                  {element.title}
-                </h3>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {img.caption}
+                </p>
               </div>
-              <p className="text-sm opacity-75 leading-relaxed">
-                {element.description}
+            ))}
+          </div>
+        </div>
+
+        {/* ── 3. Elevation ─────────────────────────────────────── */}
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
+              <span className="text-white font-bold text-sm">3</span>
+            </div>
+            <h3 className="font-serif text-xl sm:text-2xl font-bold">Elevation</h3>
+          </div>
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed pl-12">
+            Elevations crafted to highlight proportions, material transitions, and clean detailing,
+            offering a clear visual narrative of the design.
+          </p>
+
+          {/* Elevation images — stacked with captions */}
+          <div className="space-y-8">
+
+            {/* five.png */}
+            <div className="space-y-3">
+              <div
+                className="relative rounded-xl overflow-hidden cursor-pointer group"
+                style={{ height: 'clamp(220px, 42vw, 480px)' }}
+                onClick={() => openImage('/furniture/five.png')}
+              >
+                <img
+                  src="/furniture/five.png"
+                  alt="Bedroom Elevation"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-600"
+                />
+                <div className="absolute inset-0 bg-black/15 group-hover:bg-black/30 transition-colors" />
+                <div className="absolute inset-0 flex items-end p-4 sm:p-6">
+                  <span className="text-white/70 text-xs bg-black/25 backdrop-blur-sm px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                    Click to expand
+                  </span>
+                </div>
+              </div>
+              <p className="text-xs sm:text-sm text-muted-foreground pl-1 leading-relaxed">
+                Elevation of the per setups of the showroom — includes the section of bedrooms.
+              </p>
+            </div>
+
+            {/* six.png */}
+            <div className="space-y-3">
+              <div
+                className="relative rounded-xl overflow-hidden cursor-pointer group"
+                style={{ height: 'clamp(220px, 42vw, 480px)' }}
+                onClick={() => openImage('/furniture/six.png')}
+              >
+                <img
+                  src="/furniture/six.png"
+                  alt="Living Room Elevation"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-600"
+                />
+                <div className="absolute inset-0 bg-black/15 group-hover:bg-black/30 transition-colors" />
+                <div className="absolute inset-0 flex items-end p-4 sm:p-6">
+                  <span className="text-white/70 text-xs bg-black/25 backdrop-blur-sm px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                    Click to expand
+                  </span>
+                </div>
+              </div>
+              <p className="text-xs sm:text-sm text-muted-foreground pl-1 leading-relaxed">
+                This is the separate living area elevation of the showroom.
+              </p>
+            </div>
+
+            {/* eight.png */}
+            <div className="space-y-3">
+              <div
+                className="relative rounded-xl overflow-hidden cursor-pointer group"
+                style={{ height: 'clamp(220px, 42vw, 480px)' }}
+                onClick={() => openImage('/furniture/eight.png')}
+              >
+                <img
+                  src="/furniture/eight.png"
+                  alt="Kitchen Elevation"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-600"
+                />
+                <div className="absolute inset-0 bg-black/15 group-hover:bg-black/30 transition-colors" />
+                <div className="absolute inset-0 flex items-end p-4 sm:p-6">
+                  <span className="text-white/70 text-xs bg-black/25 backdrop-blur-sm px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                    Click to expand
+                  </span>
+                </div>
+              </div>
+              <p className="text-xs sm:text-sm text-muted-foreground pl-1 leading-relaxed">
+                This is the elevation of the kitchen setup of the showroom area.
+              </p>
+            </div>
+
+            {/* last.png */}
+            <div className="space-y-3">
+              <div
+                className="relative rounded-xl overflow-hidden cursor-pointer group"
+                style={{ height: 'clamp(220px, 42vw, 480px)' }}
+                onClick={() => openImage('/furniture/last.png')}
+              >
+                <img
+                  src="/furniture/last.png"
+                  alt="Private Sitting Area"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-600"
+                />
+                <div className="absolute inset-0 bg-black/15 group-hover:bg-black/30 transition-colors" />
+                <div className="absolute inset-0 flex items-end p-4 sm:p-6">
+                  <span className="text-white/70 text-xs bg-black/25 backdrop-blur-sm px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                    Click to expand
+                  </span>
+                </div>
+              </div>
+              <p className="text-xs sm:text-sm text-muted-foreground pl-1 leading-relaxed">
+                This is a private setup for the private sitting area which includes chairs and sofas.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        {/* ── 4. 3D Work ───────────────────────────────────────── */}
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
+              <span className="text-white font-bold text-sm">4</span>
+            </div>
+            <h3 className="font-serif text-xl sm:text-2xl font-bold">3D Work</h3>
+          </div>
+          {/* Description to be added */}
+
+          {/* nine.png — entrance / reception vignette */}
+          <div className="space-y-3">
+            <div
+              className="relative rounded-2xl overflow-hidden cursor-pointer group"
+              style={{ height: 'clamp(260px, 55vw, 560px)' }}
+              onClick={() => openImage('/furniture/nine.png')}
+            >
+              <img
+                src="/furniture/nine.png"
+                alt="3D Interior Sketch — Entrance & Reception"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              <div className="absolute inset-0 flex items-end p-5 sm:p-8">
+                <span className="text-white/80 text-xs sm:text-sm font-medium bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                  Entrance &amp; Reception — click to expand
+                </span>
+              </div>
+            </div>
+            <p className="text-xs sm:text-sm text-muted-foreground pl-1 leading-relaxed">
+              This is a conceptual 3D interior sketch&thinsp;/&thinsp;design vignette, not a finished
+              elevation. It is placed at the entrance of the showroom as it depicts the advertising
+              unit and reception area.
+            </p>
+          </div>
+        </div>
+
+      </div>{/* end Design Process */}
+
+      {/* ── Project Specifications ──────────────────────────────── */}
+      <div className="space-y-8">
+        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-center uppercase tracking-widest">
+          Project Specifications
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          {[
+            { label: 'Total Space',        value: '3,000 sq ft' },
+            { label: 'Display Zones',      value: '8 – 10'      },
+            { label: 'Primary Materials',  value: 'Wood · Metal · Fabric · Stone' },
+            { label: 'Design Type',        value: 'Retail Showroom' },
+          ].map((spec, i) => (
+            <div
+              key={i}
+              className="border border-border rounded-xl p-5 space-y-2 hover:border-primary hover:shadow-lg transition-all group"
+            >
+              <p className="text-xs opacity-60 font-medium uppercase tracking-wide group-hover:opacity-100 transition-opacity">
+                {spec.label}
+              </p>
+              <p className="font-serif text-base sm:text-lg font-bold text-gradient leading-tight">
+                {spec.value}
               </p>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Showroom Photography */}
-      <div className="space-y-12">
-        <h2 className="font-serif text-3xl font-bold text-center">Showroom Photography</h2>
-        
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Main Showroom */}
-          <div className="group space-y-4">
-            <div className="relative h-80 rounded-xl overflow-hidden mb-4">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/furniture_showroom-WPxkreQyfRyNFYpXXzO0INcx0tBhcO.jpg"
-                alt="Furniture Showroom - Triangular Table"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
-            </div>
-            <h3 className="font-serif text-xl font-bold">Minimalist Dining Setting</h3>
-            <p className="text-sm opacity-75">
-              The triangular dining table showcased with soft lighting, plant accent, and refined accessories demonstrates the minimalist aesthetic of the showroom.
-            </p>
-          </div>
-
-          {/* Closeup Detail */}
-          <div className="group space-y-4">
-            <div className="relative h-80 rounded-xl overflow-hidden mb-4">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/furniture_showroom2-ioYlt5FY1pQxcZFEiS09O1SIysKB5F.jpg"
-                alt="Furniture Detail with Plant"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
-            </div>
-            <h3 className="font-serif text-xl font-bold">Table Detail & Styling</h3>
-            <p className="text-sm opacity-75">
-              Close-up view highlighting the triangular form, natural wood grain, and careful placement of accessories that exemplify the showroom's curated approach.
-            </p>
-          </div>
-
-          {/* Human Scale */}
-          <div className="group space-y-4">
-            <div className="relative h-80 rounded-xl overflow-hidden mb-4">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/furniture_showroom3-dYFBVLyCQfs1VqhKo9gRXKwC4ClZ5j.jpg"
-                alt="Human Using Furniture"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
-            </div>
-            <h3 className="font-serif text-xl font-bold">Human Scale Experience</h3>
-            <p className="text-sm opacity-75">
-              Showcasing the furniture in real-world use, demonstrating comfort, proportions, and how pieces integrate into daily life and work spaces.
-            </p>
-          </div>
-
-          {/* Technical Documentation */}
-          <div className="group space-y-4">
-            <div className="relative h-80 rounded-xl overflow-hidden mb-4">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/furniture_showroom5-TxkeqDx1Pg5gJ8lX2k8BcBDXEyp0bL.jpg"
-                alt="Structural Design Details"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
-            </div>
-            <h3 className="font-serif text-xl font-bold">Structural Design</h3>
-            <p className="text-sm opacity-75">
-              Technical drawings reveal the innovative triangular geometry and assembly logic that makes this furniture both structurally sound and visually striking.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Tri-Fam Dining Table Case Study */}
-      <div className="bg-gradient-to-r from-primary/5 to-accent/5 rounded-2xl p-6 sm:p-8 md:p-12 space-y-8">
-        <h2 className="font-serif text-2xl sm:text-3xl font-bold">Tri-Fam Dining Table - Design Case Study</h2>
-        
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Image */}
-          <div className="relative h-96 rounded-xl overflow-hidden">
+      {/* ── Fullscreen Viewer ───────────────────────────────────── */}
+      {fullscreenImage && (
+        <div
+          className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-4 animate-fade-in"
+          onClick={closeImage}
+        >
+          <button
+            onClick={closeImage}
+            className="absolute top-4 right-4 z-[10000] p-3 bg-white/20 hover:bg-white/40 rounded-full transition-all"
+            aria-label="Close fullscreen"
+          >
+            <X size={22} className="text-white" />
+          </button>
+          <div
+            className="max-w-[92vw] max-h-[90vh] flex items-center justify-center animate-zoom-in"
+            onClick={e => e.stopPropagation()}
+          >
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/furniture_showroom4-EiLrlKNOt7TSzy70rriCeBUatcbPkl.jpg"
-              alt="Tri-Fam Dining Table Design Process"
-              className="w-full h-full object-cover"
+              src={fullscreenImage}
+              alt="Fullscreen view"
+              className="max-w-full max-h-[88vh] object-contain rounded-lg shadow-2xl"
             />
           </div>
-
-          {/* Content */}
-          <div className="space-y-6">
-            <div>
-              <h3 className="font-semibold text-lg text-primary mb-2">Concept & Description</h3>
-              <p className="text-sm opacity-90 leading-relaxed">
-                A beautifully crafted dining table designed to create an intimate dining experience for a family of three. With its unique triangular shape, this table provides a cozy and comfortable space for each family member to face one another, encouraging meaningful conversations and fostering a sense of togetherness during mealtime.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-lg text-primary mb-3">Design Highlights</h3>
-              <ul className="space-y-2 text-sm opacity-90">
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1">→</span>
-                  <span>Unique triangular geometry promotes face-to-face interaction</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1">→</span>
-                  <span>Rounded corners for safety and comfort</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1">→</span>
-                  <span>Absence of obstructive stances allows free movement</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1">→</span>
-                  <span>Modern finish complements contemporary dining décor</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1">→</span>
-                  <span>Perfect centerpiece for family gatherings</span>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-lg text-primary mb-2">Design Process</h3>
-              <p className="text-sm opacity-90">
-                5-step process from final ideation through real-life 3D prototyping, material sourcing, precise joinery, assembly, and final product delivery with team collaboration.
-              </p>
-            </div>
-          </div>
+          <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-xs text-center">
+            Click anywhere or press ESC to close
+          </p>
         </div>
-      </div>
+      )}
 
-      {/* Design Process */}
-      <div className="space-y-12">
-        <h2 className="font-serif text-3xl font-bold text-center">Design Process & Documentation</h2>
-        
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Mood Board */}
-          <div className="group space-y-4">
-            <div className="relative h-72 rounded-xl overflow-hidden mb-4 bg-muted">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a9421c_6eb67fdbf32a443596012e50bc236919~mv2-oIdk9nObKeoeyJNwOaJwpHAHbPAzcE.jpeg"
-                alt="Mood Board"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors" />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="text-white text-center">
-                  <p className="text-lg font-semibold mb-2">Explore Materials</p>
-                  <p className="text-sm">View Mood Board →</p>
-                </div>
-              </div>
-            </div>
-            <h3 className="font-serif text-xl font-bold">Material Palette</h3>
-            <p className="text-sm opacity-75">
-              Carefully curated materials including natural wood finishes, stone textures, fabrics, and metallic accents create a cohesive design language.
-            </p>
-          </div>
-
-          {/* Structural Details */}
-          <div className="group space-y-4">
-            <div className="relative h-72 rounded-xl overflow-hidden mb-4 bg-muted">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/furniture_showroom5-TxkeqDx1Pg5gJ8lX2k8BcBDXEyp0bL.jpg"
-                alt="Structural Details"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors" />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="text-white text-center">
-                  <p className="text-lg font-semibold mb-2">Assembly Logic</p>
-                  <p className="text-sm">View Details →</p>
-                </div>
-              </div>
-            </div>
-            <h3 className="font-serif text-xl font-bold">Structural Design</h3>
-            <p className="text-sm opacity-75">
-              Innovative joinery and assembly techniques ensure durability while maintaining the clean, minimal aesthetic of the finished pieces.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Project Specifications */}
-      <div className="space-y-8">
-        <h2 className="font-serif text-3xl font-bold text-center">Project Specifications</h2>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="border border-border rounded-lg p-6 space-y-2 hover:border-primary hover:shadow-lg transition-all group">
-            <p className="text-sm opacity-75 group-hover:opacity-100">Total Space</p>
-            <p className="font-serif text-2xl font-bold text-gradient">3,000 sq ft</p>
-          </div>
-          <div className="border border-border rounded-lg p-6 space-y-2 hover:border-primary hover:shadow-lg transition-all group">
-            <p className="text-sm opacity-75 group-hover:opacity-100">Display Zones</p>
-            <p className="font-serif text-2xl font-bold text-gradient">8-10</p>
-          </div>
-          <div className="border border-border rounded-lg p-6 space-y-2 hover:border-primary hover:shadow-lg transition-all group">
-            <p className="text-sm opacity-75 group-hover:opacity-100">Primary Materials</p>
-            <p className="font-serif text-lg font-bold">Wood, Metal, Fabric</p>
-          </div>
-          <div className="border border-border rounded-lg p-6 space-y-2 hover:border-primary hover:shadow-lg transition-all group">
-            <p className="text-sm opacity-75 group-hover:opacity-100">Design Type</p>
-            <p className="font-serif text-lg font-bold">Retail Showroom</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Key Features */}
-      <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 md:p-12 space-y-8">
-        <h2 className="font-serif text-3xl font-bold">Key Features & Benefits</h2>
-        
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-4">
-            <h3 className="font-semibold text-lg flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-primary" />
-              Customer Experience
-            </h3>
-            <p className="opacity-85">
-              Open and intuitive layout guides customers through various display zones, creating a memorable shopping experience with room settings they can visualize.
-            </p>
-          </div>
-          
-          <div className="space-y-4">
-            <h3 className="font-semibold text-lg flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-accent" />
-              Product Showcase
-            </h3>
-            <p className="opacity-85">
-              Each furniture collection gets dedicated space with professional lighting and context, allowing customers to appreciate quality and craftsmanship.
-            </p>
-          </div>
-          
-          <div className="space-y-4">
-            <h3 className="font-semibold text-lg flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-primary" />
-              Material Integration
-            </h3>
-            <p className="opacity-85">
-              Harmonious blend of natural materials creates visual continuity and sophistication, complementing rather than competing with furniture displays.
-            </p>
-          </div>
-          
-          <div className="space-y-4">
-            <h3 className="font-semibold text-lg flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-accent" />
-              Lighting Strategy
-            </h3>
-            <p className="opacity-85">
-              Soft, layered lighting highlights products while creating ambient warmth, transforming the showroom into an inviting destination space.
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
