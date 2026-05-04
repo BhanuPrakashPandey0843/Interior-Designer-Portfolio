@@ -1,330 +1,376 @@
 'use client';
 
 import { useState } from 'react';
-import { X } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
+
+const furnitureShowroomImages = [
+  {
+    src: '/furniture/one.png',
+    label: 'MoodBoard',
+    caption: 'Shell-inspired curves with a blend of materials creating an elegant showroom concept.',
+  },
+  {
+    src: '/furniture/two.png',
+    label: '2D AutoCAD Floor Plan',
+    caption: '2D AutoCAD Floor Plan of the Showroom',
+  },
+  {
+    src: '/furniture/three.png',
+    label: '2D Hatched Floor Plan',
+    caption: '2D Hatched Floor Plan of the Showroom',
+  },
+  {
+    src: '/furniture/four.jpg',
+    label: '3D View',
+    caption: '3D View of the Floor Plan of the Showroom',
+  },
+  {
+    src: '/furniture/five.png',
+    label: 'Bedroom Elevation',
+    caption: 'Elevation of the personal setups including bedroom sections.',
+  },
+];
+
+const threeDImages = [
+  {
+    id: 'imagea',
+    title: 'Entrance Display',
+    image: '/furniture/iamgea.jpeg',
+    description: 'Entrance with Advertising unit and a Big display for single sofa chairs.'
+  },
+  {
+    id: 'imageb',
+    title: 'Chair Setup',
+    image: '/furniture/imageb.jpeg',
+    description: 'Single setup for chair.'
+  },
+  {
+    id: 'imagec',
+    title: 'Bedroom Setup',
+    image: '/furniture/imagec.png',
+    description: 'Setup of Bedroom.'
+  },
+  {
+    id: 'imaged',
+    title: 'Contemporary Showroom',
+    image: '/furniture/imaged.png',
+    description: 'A contemporary furniture showroom setup showcasing spatial planning.'
+  },
+  {
+    id: 'imagee',
+    title: 'Private Sitting Area',
+    image: '/furniture/imagee.png',
+    description: 'This is a private setup for the private sitting area with chairs and sofas.'
+  },
+  {
+    id: 'imagef',
+    title: 'Living Room Setup',
+    image: '/furniture/imagef.png',
+    description: 'Setup for living room.'
+  },
+  {
+    id: 'imageg',
+    title: 'Indoor-Outdoor Concept',
+    image: '/furniture/iamgeg.png',
+    description: 'Indoor–outdoor furniture showroom concept blending nature.'
+  }
+];
 
 export function FurnitureShowroomCaseStudy() {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
 
-  const openImage = (src: string) => setFullscreenImage(src);
-  const closeImage = () => setFullscreenImage(null);
+  const openLightbox = (i: number) => setLightboxIndex(i);
+  const closeLightbox = () => setLightboxIndex(null);
+
+  const prev = () =>
+    setLightboxIndex((i) =>
+      i === null ? 0 : (i - 1 + furnitureShowroomImages.length) % furnitureShowroomImages.length
+    );
+  const next = () =>
+    setLightboxIndex((i) =>
+      i === null ? 0 : (i + 1) % furnitureShowroomImages.length
+    );
 
   return (
-    <div className="w-full space-y-20 animate-fade-in-up">
+    <div className="space-y-6 sm:space-y-10">
 
-      {/* ── Header ─────────────────────────────────────────────── */}
-      <div className="text-center space-y-5">
-        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-gradient">
-          Furniture Showroom
-        </h1>
-        <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-          The furniture showroom features a sculptural shell-like exterior that draws visitors into
-          a calm, open interior. The layout is thoughtfully organized into curated zones, allowing
-          each furniture piece to be experienced in a realistic setting. Natural materials, soft
-          lighting, and subtle detailing create a warm and minimal atmosphere, balancing
-          functionality with quiet visual appeal. The space is designed to feel open, making the
-          showroom both inviting and easy to navigate.
+      {/* ── Header ────────────────────────────────── */}
+      <div className="border-b border-border pb-6 sm:pb-8">
+        <p className="text-xs sm:text-sm font-semibold text-primary uppercase tracking-widest mb-2">
+          Project — Furniture Showroom
         </p>
+        <h2 className="font-serif text-2xl sm:text-4xl font-bold text-gradient mb-3 sm:mb-4">
+          Sculptural Showroom Design
+        </h2>
+        <p className="text-sm sm:text-base opacity-80 max-w-2xl leading-relaxed">
+          The furniture showroom features a sculptural shell-like exterior that draws visitors into a calm, open interior. The layout is thoughtfully organized into curated zones, allowing each furniture piece to be experienced in a realistic setting. Natural materials, soft lighting, and subtle detailing create a warm and minimal atmosphere, balancing functionality with quiet visual appeal.
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mt-4">
+          {['Furniture Retailer', '2024', '3,000 sq ft', 'Modern Retail'].map((tag) => (
+            <span
+              key={tag}
+              className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 font-medium"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
 
-      {/* ── DESIGN PROCESS ─────────────────────────────────────── */}
-      <div className="space-y-16">
-        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-center uppercase tracking-widest text-gradient">
-          Design Process
-        </h2>
+      {/* ── Hero image (one.png) ─────────────────── */}
+      <div
+        className="relative w-full rounded-2xl overflow-hidden cursor-pointer group shadow-2xl"
+        style={{ aspectRatio: '16/9' }}
+        onClick={() => openLightbox(0)}
+      >
+        <img
+          src={furnitureShowroomImages[0].src}
+          alt={furnitureShowroomImages[0].label}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
 
-        {/* ── 1. MoodBoard ──────────────────────────────────────── */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-4">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
-              <span className="text-white font-bold text-sm">1</span>
-            </div>
-            <h3 className="font-serif text-xl sm:text-2xl font-bold">MoodBoard</h3>
-          </div>
-          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed pl-12">
-            This highlights soft, shell-inspired curves and a blend of materials like wood, metal,
-            fabric, and stone, creating an elegant and fluid showroom concept.
+        {/* Caption */}
+        <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white">
+          <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-primary/90 mb-1">
+            {furnitureShowroomImages[0].label}
           </p>
+          <p className="text-sm sm:text-lg font-medium max-w-md leading-snug">
+            {furnitureShowroomImages[0].caption}
+          </p>
+        </div>
 
-          {/* Full-width mood board image */}
+        {/* Expand badge */}
+        <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
+          <span className="bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg flex items-center gap-1.5 font-medium">
+            <ZoomIn size={12} /> Expand
+          </span>
+        </div>
+
+        {/* Image count badge */}
+        <div className="absolute top-3 left-3">
+          <span className="bg-primary/80 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg font-semibold">
+            1 / {furnitureShowroomImages.length}
+          </span>
+        </div>
+      </div>
+
+      {/* ── 2 × 2 grid (images 2–5) ──────────────── */}
+      <div className="grid grid-cols-2 gap-3 sm:gap-4">
+        {furnitureShowroomImages.slice(1).map((img, i) => (
           <div
-            className="relative rounded-2xl overflow-hidden cursor-pointer group"
-            style={{ height: 'clamp(260px, 55vw, 560px)' }}
-            onClick={() => openImage('/furniture/one.png')}
+            key={img.src}
+            className="relative rounded-xl overflow-hidden cursor-pointer group shadow-lg"
+            style={{ aspectRatio: '4/3' }}
+            onClick={() => openLightbox(i + 1)}
           >
             <img
-              src="/furniture/one.png"
-              alt="Furniture Showroom MoodBoard"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              src={img.src}
+              alt={img.label}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-            <div className="absolute inset-0 flex items-end p-5 sm:p-8">
-              <span className="text-white/80 text-xs sm:text-sm font-medium bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                MoodBoard — click to expand
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+            {/* Hover full overlay */}
+            <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+            {/* Caption */}
+            <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 right-2 text-white">
+              <p className="text-[9px] sm:text-[11px] font-semibold uppercase tracking-widest text-primary/80 mb-0.5">
+                {img.label}
+              </p>
+              <p className="text-[11px] sm:text-sm font-medium leading-snug line-clamp-2 opacity-90">
+                {img.caption}
+              </p>
+            </div>
+
+            {/* Expand badge */}
+            <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-all duration-200">
+              <span className="bg-black/60 backdrop-blur-sm text-white text-[10px] px-2 py-1 rounded-md flex items-center gap-1">
+                <ZoomIn size={9} /> View
+              </span>
+            </div>
+
+            {/* Index badge */}
+            <div className="absolute top-2 left-2">
+              <span className="bg-black/40 text-white/80 text-[10px] px-1.5 py-0.5 rounded font-medium">
+                {i + 2} / {furnitureShowroomImages.length}
               </span>
             </div>
           </div>
-        </div>
+        ))}
+      </div>
 
-        {/* ── 2. Furniture Layout ───────────────────────────────── */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-4">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
-              <span className="text-white font-bold text-sm">2</span>
-            </div>
-            <h3 className="font-serif text-xl sm:text-2xl font-bold">Furniture Layout</h3>
-          </div>
-          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed pl-12">
-            Furniture layout designed for clarity, comfort, and efficient use of space, enhancing
-            both function and flow.
-          </p>
-
-          {/* 3-image grid with captions */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-6">
-            {[
-              { src: '/furniture/two.png',   alt: 'Furniture Layout Plan 1', caption: '2D AutoCAD Floor Plan of the Showroom' },
-              { src: '/furniture/three.png', alt: 'Furniture Layout Plan 2', caption: '2D Hatched Floor Plan of the Showroom' },
-              { src: '/furniture/four.jpg',  alt: 'Furniture Layout Plan 3', caption: '3D View of the Floor Plan of the Showroom' },
-            ].map((img, i) => (
-              <div key={i} className="space-y-3">
-                <div
-                  className="relative rounded-xl overflow-hidden cursor-pointer group"
-                  style={{ height: 'clamp(180px, 28vw, 320px)' }}
-                  onClick={() => openImage(img.src)}
-                >
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    className="w-full h-full object-cover transition-transform duration-500"
-                    style={{ transform: 'scale(1)', transition: 'transform 0.5s ease' }}
-                    onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.07)')}
-                    onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
-                  />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/35 transition-colors" />
-                  <div className="absolute inset-0 flex items-end p-3">
-                    <span className="text-white/70 text-xs bg-black/25 backdrop-blur-sm px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                      View full →
-                    </span>
-                  </div>
-                </div>
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  {img.caption}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ── 3. Elevation ─────────────────────────────────────── */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-4">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
-              <span className="text-white font-bold text-sm">3</span>
-            </div>
-            <h3 className="font-serif text-xl sm:text-2xl font-bold">Elevation</h3>
-          </div>
-          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed pl-12">
-            Elevations crafted to highlight proportions, material transitions, and clean detailing,
-            offering a clear visual narrative of the design.
-          </p>
-
-          {/* Elevation images — stacked with captions */}
-          <div className="space-y-8">
-
-            {/* five.png */}
-            <div className="space-y-3">
-              <div
-                className="relative rounded-xl overflow-hidden cursor-pointer group"
-                style={{ height: 'clamp(220px, 42vw, 480px)' }}
-                onClick={() => openImage('/furniture/five.png')}
-              >
-                <img
-                  src="/furniture/five.png"
-                  alt="Bedroom Elevation"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-600"
-                />
-                <div className="absolute inset-0 bg-black/15 group-hover:bg-black/30 transition-colors" />
-                <div className="absolute inset-0 flex items-end p-4 sm:p-6">
-                  <span className="text-white/70 text-xs bg-black/25 backdrop-blur-sm px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                    Click to expand
-                  </span>
-                </div>
-              </div>
-              <p className="text-xs sm:text-sm text-muted-foreground pl-1 leading-relaxed">
-                Elevation of the per setups of the showroom — includes the section of bedrooms.
-              </p>
-            </div>
-
-            {/* six.png */}
-            <div className="space-y-3">
-              <div
-                className="relative rounded-xl overflow-hidden cursor-pointer group"
-                style={{ height: 'clamp(220px, 42vw, 480px)' }}
-                onClick={() => openImage('/furniture/six.png')}
-              >
-                <img
-                  src="/furniture/six.png"
-                  alt="Living Room Elevation"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-600"
-                />
-                <div className="absolute inset-0 bg-black/15 group-hover:bg-black/30 transition-colors" />
-                <div className="absolute inset-0 flex items-end p-4 sm:p-6">
-                  <span className="text-white/70 text-xs bg-black/25 backdrop-blur-sm px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                    Click to expand
-                  </span>
-                </div>
-              </div>
-              <p className="text-xs sm:text-sm text-muted-foreground pl-1 leading-relaxed">
-                This is the separate living area elevation of the showroom.
-              </p>
-            </div>
-
-            {/* eight.png */}
-            <div className="space-y-3">
-              <div
-                className="relative rounded-xl overflow-hidden cursor-pointer group"
-                style={{ height: 'clamp(220px, 42vw, 480px)' }}
-                onClick={() => openImage('/furniture/eight.png')}
-              >
-                <img
-                  src="/furniture/eight.png"
-                  alt="Kitchen Elevation"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-600"
-                />
-                <div className="absolute inset-0 bg-black/15 group-hover:bg-black/30 transition-colors" />
-                <div className="absolute inset-0 flex items-end p-4 sm:p-6">
-                  <span className="text-white/70 text-xs bg-black/25 backdrop-blur-sm px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                    Click to expand
-                  </span>
-                </div>
-              </div>
-              <p className="text-xs sm:text-sm text-muted-foreground pl-1 leading-relaxed">
-                This is the elevation of the kitchen setup of the showroom area.
-              </p>
-            </div>
-
-            {/* last.png */}
-            <div className="space-y-3">
-              <div
-                className="relative rounded-xl overflow-hidden cursor-pointer group"
-                style={{ height: 'clamp(220px, 42vw, 480px)' }}
-                onClick={() => openImage('/furniture/last.png')}
-              >
-                <img
-                  src="/furniture/last.png"
-                  alt="Private Sitting Area"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-600"
-                />
-                <div className="absolute inset-0 bg-black/15 group-hover:bg-black/30 transition-colors" />
-                <div className="absolute inset-0 flex items-end p-4 sm:p-6">
-                  <span className="text-white/70 text-xs bg-black/25 backdrop-blur-sm px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                    Click to expand
-                  </span>
-                </div>
-              </div>
-              <p className="text-xs sm:text-sm text-muted-foreground pl-1 leading-relaxed">
-                This is a private setup for the private sitting area which includes chairs and sofas.
-              </p>
-            </div>
-
-          </div>
-        </div>
-
-        {/* ── 4. 3D Work ───────────────────────────────────────── */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-4">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
-              <span className="text-white font-bold text-sm">4</span>
-            </div>
-            <h3 className="font-serif text-xl sm:text-2xl font-bold">3D Work</h3>
-          </div>
-          {/* Description to be added */}
-
-          {/* nine.png — entrance / reception vignette */}
-          <div className="space-y-3">
-            <div
-              className="relative rounded-2xl overflow-hidden cursor-pointer group"
-              style={{ height: 'clamp(260px, 55vw, 560px)' }}
-              onClick={() => openImage('/furniture/nine.png')}
-            >
-              <img
-                src="/furniture/nine.png"
-                alt="3D Interior Sketch — Entrance & Reception"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              <div className="absolute inset-0 flex items-end p-5 sm:p-8">
-                <span className="text-white/80 text-xs sm:text-sm font-medium bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                  Entrance &amp; Reception — click to expand
-                </span>
-              </div>
-            </div>
-            <p className="text-xs sm:text-sm text-muted-foreground pl-1 leading-relaxed">
-              This is a conceptual 3D interior sketch&thinsp;/&thinsp;design vignette, not a finished
-              elevation. It is placed at the entrance of the showroom as it depicts the advertising
-              unit and reception area.
-            </p>
-          </div>
-        </div>
-
-      </div>{/* end Design Process */}
-
-      {/* ── Project Specifications ──────────────────────────────── */}
-      <div className="space-y-8">
-        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-center uppercase tracking-widest">
-          Project Specifications
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+      {/* ── Highlights grid ───────────────────────── */}
+      <div className="border-t border-border pt-6">
+        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
+          Project Highlights
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
           {[
-            { label: 'Total Space',        value: '3,000 sq ft' },
-            { label: 'Display Zones',      value: '8 – 10'      },
-            { label: 'Primary Materials',  value: 'Wood · Metal · Fabric · Stone' },
-            { label: 'Design Type',        value: 'Retail Showroom' },
-          ].map((spec, i) => (
+            { label: 'Shell-inspired Curves',  icon: '🐚' },
+            { label: 'Curated Display Zones',  icon: '📐' },
+            { label: 'Natural Materials',      icon: '🪵' },
+            { label: 'Soft Lighting Design',   icon: '💡' },
+            { label: 'Open Spatial Flow',      icon: '✨' },
+            { label: 'Minimal Aesthetic',      icon: '🎨' },
+          ].map((h) => (
             <div
-              key={i}
-              className="border border-border rounded-xl p-5 space-y-2 hover:border-primary hover:shadow-lg transition-all group"
+              key={h.label}
+              className="flex items-center gap-2 bg-muted/40 hover:bg-primary/10 rounded-lg px-3 py-2.5 transition-colors duration-200 group/h"
             >
-              <p className="text-xs opacity-60 font-medium uppercase tracking-wide group-hover:opacity-100 transition-opacity">
-                {spec.label}
-              </p>
-              <p className="font-serif text-base sm:text-lg font-bold text-gradient leading-tight">
-                {spec.value}
-              </p>
+              <span className="text-base group-hover/h:scale-110 transition-transform">{h.icon}</span>
+              <span className="text-xs sm:text-sm font-medium">{h.label}</span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ── Fullscreen Viewer ───────────────────────────────────── */}
-      {fullscreenImage && (
+      {/* ── Lightbox ──────────────────────────────── */}
+      {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-4 animate-fade-in"
-          onClick={closeImage}
+          className="fixed inset-0 bg-black/96 z-[9999] flex items-center justify-center"
+          onClick={closeLightbox}
         >
+          {/* Close */}
           <button
-            onClick={closeImage}
-            className="absolute top-4 right-4 z-[10000] p-3 bg-white/20 hover:bg-white/40 rounded-full transition-all"
-            aria-label="Close fullscreen"
+            className="absolute top-4 right-4 p-2.5 bg-white/10 hover:bg-white/25 rounded-full transition-all"
+            onClick={(e) => { e.stopPropagation(); closeLightbox(); }}
           >
-            <X size={22} className="text-white" />
+            <X size={20} className="text-white" />
           </button>
+
+          {/* Prev */}
+          <button
+            className="absolute left-3 sm:left-6 p-2.5 bg-white/10 hover:bg-white/25 rounded-full transition-all"
+            onClick={(e) => { e.stopPropagation(); prev(); }}
+          >
+            <ChevronLeft size={22} className="text-white" />
+          </button>
+
+          {/* Image + caption */}
           <div
-            className="max-w-[92vw] max-h-[90vh] flex items-center justify-center animate-zoom-in"
-            onClick={e => e.stopPropagation()}
+            className="flex flex-col items-center gap-4 max-w-[88vw] max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={fullscreenImage}
-              alt="Fullscreen view"
-              className="max-w-full max-h-[88vh] object-contain rounded-lg shadow-2xl"
+              src={furnitureShowroomImages[lightboxIndex].src}
+              alt={furnitureShowroomImages[lightboxIndex].label}
+              className="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-2xl"
+              style={{ transition: 'opacity 0.25s ease' }}
             />
+            <div className="text-center text-white px-4">
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">
+                {furnitureShowroomImages[lightboxIndex].label}
+              </p>
+              <p className="text-sm opacity-75">{furnitureShowroomImages[lightboxIndex].caption}</p>
+            </div>
           </div>
-          <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-xs text-center">
-            Click anywhere or press ESC to close
-          </p>
+
+          {/* Next */}
+          <button
+            className="absolute right-3 sm:right-6 p-2.5 bg-white/10 hover:bg-white/25 rounded-full transition-all"
+            onClick={(e) => { e.stopPropagation(); next(); }}
+          >
+            <ChevronRight size={22} className="text-white" />
+          </button>
+
+          {/* Dot indicators */}
+          <div className="absolute bottom-5 flex gap-2">
+            {furnitureShowroomImages.map((_, i) => (
+              <button
+                key={i}
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex(i); }}
+                className={`rounded-full transition-all duration-300 ${
+                  i === lightboxIndex
+                    ? 'w-5 h-2 bg-primary'
+                    : 'w-2 h-2 bg-white/35 hover:bg-white/60'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       )}
 
+      {/* 3D Visualizations Section */}
+      <div className="border-t border-border pt-12 sm:pt-16 mt-12 sm:mt-16">
+        <div className="text-center mb-12 sm:mb-20">
+          <h2 className="font-serif text-2xl sm:text-4xl font-bold mb-4 uppercase tracking-wider">
+            3D Visualizations
+          </h2>
+          <p className="text-sm sm:text-base opacity-70 max-w-2xl mx-auto">
+            Explore our premium 3D rendered furniture designs and spatial planning concepts
+          </p>
+        </div>
+
+        {/* 3D Images Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+          {threeDImages.map((item, index) => (
+            <div
+              key={item.id}
+              className="group overflow-hidden rounded-2xl bg-card border border-border/50 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer"
+              style={{ animationDelay: `${index * 0.1}s` }}
+              onClick={() => setFullscreenImage(item.image)}
+            >
+              {/* Image Container */}
+              <div className="relative h-64 sm:h-72 overflow-hidden bg-muted">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300"></div>
+                
+                {/* Hover Icon */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30">
+                    <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-5 sm:p-6 lg:p-7">
+                <h3 className="font-serif text-base sm:text-lg font-bold mb-2 group-hover:text-primary transition-colors duration-300 line-clamp-1">
+                  {item.title}
+                </h3>
+                <p className="text-xs sm:text-sm opacity-70 leading-relaxed line-clamp-2 group-hover:opacity-90 transition-opacity duration-300">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Fullscreen Image Modal */}
+      {fullscreenImage && (
+        <div
+          className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-3 sm:p-4"
+          onClick={() => setFullscreenImage(null)}
+        >
+          <button
+            onClick={(e) => { e.stopPropagation(); setFullscreenImage(null); }}
+            className="absolute top-4 right-4 z-[10000] p-2 sm:p-3 bg-white/20 hover:bg-white/40 rounded-full transition-all"
+          >
+            <X size={24} className="text-white" />
+          </button>
+          <img
+            src={fullscreenImage}
+            alt="Fullscreen"
+            className="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 }
