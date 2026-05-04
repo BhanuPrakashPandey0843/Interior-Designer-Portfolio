@@ -171,7 +171,7 @@ const PortfolioPage = () => {
               <svg viewBox="0 0 100 100" className="w-full h-full animate-rotate-slow">
                 <defs>
                   <linearGradient id="diamondGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#d4549a" />
+                    <stop offset="0%" stopColor="#1a6b3a" />
                     <stop offset="100%" stopColor="#c9a046" />
                   </linearGradient>
                 </defs>
@@ -464,7 +464,7 @@ const PortfolioPage = () => {
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                   <defs>
                     <linearGradient id="contactGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#d4549a" />
+                      <stop offset="0%" stopColor="#1a6b3a" />
                       <stop offset="100%" stopColor="#c9a046" />
                     </linearGradient>
                   </defs>

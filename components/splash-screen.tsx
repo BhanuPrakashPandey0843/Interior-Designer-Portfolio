@@ -39,7 +39,7 @@ export function SplashScreen() {
           <svg viewBox="0 0 200 200" className="w-full h-full" fill="none">
             <defs>
               <linearGradient id="splashGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#d4549a" />
+                <stop offset="0%" stopColor="#1a6b3a" />
                 <stop offset="100%" stopColor="#c9a046" />
               </linearGradient>
               <filter id="glow">
@@ -56,8 +56,8 @@ export function SplashScreen() {
             
             {/* Diamond Pattern - Pink */}
             <g filter="url(#glow)">
-              <polygon points="100,40 130,70 100,100 70,70" fill="#d4549a" opacity="0.8" />
-              <polygon points="100,100 130,130 100,160 70,130" fill="#d4549a" opacity="0.8" />
+              <polygon points="100,40 130,70 100,100 70,70" fill="#1a6b3a" opacity="0.8" />
+              <polygon points="100,100 130,130 100,160 70,130" fill="#1a6b3a" opacity="0.8" />
             </g>
             
             {/* Diamond Pattern - Gold */}
@@ -68,7 +68,7 @@ export function SplashScreen() {
             
             {/* Center Accent */}
             <circle cx="100" cy="100" r="20" fill="url(#splashGrad)" />
-            <circle cx="100" cy="100" r="12" fill="#faf8f3" />
+            <circle cx="100" cy="100" r="12" fill="#f4f8f4" />
             
             {/* Decorative dots */}
             <circle cx="100" cy="60" r="4" fill="#c9a046" opacity="0.6" />
