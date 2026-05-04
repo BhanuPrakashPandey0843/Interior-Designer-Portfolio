@@ -300,7 +300,7 @@ const PortfolioPage = () => {
                 Alongside interior design, I specialize in Graphic Design, crafting clear visuals, presentations, and creative concepts using professional tools, ensuring effective communication of ideas and concepts. I enjoy blending spatial design with visual storytelling to create impactful and purposeful work.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                <a href="#certificates" className="px-6 sm:px-8 py-2.5 sm:py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-accent hover-lift transition-all text-center text-sm sm:text-base whitespace-nowrap">
+                <a href="#portfolio" className="px-6 sm:px-8 py-2.5 sm:py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-accent hover-lift transition-all text-center text-sm sm:text-base whitespace-nowrap">
                   Explore Work
                 </a>
                 <a href="#contact" className="px-6 sm:px-8 py-2.5 sm:py-3 border border-primary text-primary font-medium rounded-lg hover:bg-primary/10 hover-lift transition-all text-center text-sm sm:text-base whitespace-nowrap">
@@ -383,7 +383,7 @@ const PortfolioPage = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section className="py-12 sm:py-24 bg-background relative z-20">
+      <section id="portfolio" className="py-12 sm:py-24 bg-background relative z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <h2 className="font-serif text-2xl sm:text-4xl font-bold text-center mb-8 sm:mb-16 uppercase tracking-wider scroll-reveal">
             Portfolio Projects
