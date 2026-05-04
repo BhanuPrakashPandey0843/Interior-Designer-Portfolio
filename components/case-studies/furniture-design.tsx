@@ -74,7 +74,7 @@ export const FurnitureDesignGallery = () => {
         </div>
       </div>
 
-      {/* ── Hero image (one.png) ─────────────────── */}
+      {/* ── Hero image (one.jpeg) ─────────────────── */}
       <div
         className="relative w-full rounded-2xl overflow-hidden cursor-pointer group shadow-2xl"
         style={{ aspectRatio: '16/9' }}

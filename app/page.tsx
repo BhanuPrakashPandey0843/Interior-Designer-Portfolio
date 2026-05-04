@@ -95,7 +95,7 @@ const PortfolioPage = () => {
     {
       id: 2,
       title: 'Furniture Design',
-      image: '/furniture/one.jpeg',
+      image: '/furrrr/one.jpeg',
       description: 'The furniture showroom features a sculptural shell-like exterior that draws visitors into a calm, open interior. The layout is thoughtfully organized into curated zones, allowing each furniture piece to be experienced in a realistic setting. Natural materials, soft lighting, and subtle detailing create a warm and minimal atmosphere, balancing functionality with quiet visual appeal. The space is designed to feel open, making the showroom both inviting and easy to navigate.',
       caseStudy: 'furniture-design',
       details: {
@@ -153,7 +153,7 @@ const PortfolioPage = () => {
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-background/90 backdrop-blur-md z-50 border-b border-border smooth-hover">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-2 sm:space-x-3 animate-fade-in-down min-w-0">
+          <div className="flex items-center space-x-2 sm:space-x-3 animate-fade-in-down min-w-0 nav-logo">
             <div className="w-7 h-7 sm:w-10 sm:h-10 flex-shrink-0">
               <svg viewBox="0 0 100 100" className="w-full h-full animate-rotate-slow">
                 <defs>
@@ -221,7 +221,7 @@ const PortfolioPage = () => {
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden bg-card border-t border-border overflow-y-auto max-h-[calc(100vh-70px)]">
+          <div className="md:hidden bg-card border-t border-border overflow-y-auto max-h-[calc(100vh-70px)] mobile-menu-panel">
             <div className="px-3 py-3 space-y-2">
               <a href="#home" className="block px-3 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors">Home</a>
               <button
@@ -301,7 +301,7 @@ const PortfolioPage = () => {
                 <div className="absolute -top-10 -right-10 w-32 sm:w-48 h-32 sm:h-48 bg-primary/10 rounded-full blur-3xl"></div>
                 <div className="absolute -bottom-10 -left-10 w-32 sm:w-48 h-32 sm:h-48 bg-accent/10 rounded-full blur-3xl"></div>
                 <div
-                  className="relative z-10 h-full rounded-2xl overflow-hidden shadow-2xl border-4 sm:border-8 border-muted/50 hover-lift cursor-pointer group"
+                  className="relative z-10 h-full rounded-2xl overflow-hidden shadow-2xl border-4 sm:border-8 border-muted/50 hover-lift cursor-pointer group portrait-frame"
                   onClick={() => setFullscreenImage('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PHOTO-2026-05-01-23-07-14-RJR1TuddOpp91BlEsALJOy4Yii6VZd.jpg')}
                 >
                   <img
@@ -328,7 +328,7 @@ const PortfolioPage = () => {
               {[...skills, ...skills].map((skill, index) => (
                 <div
                   key={`${skill.name}-${index}`}
-                  className="flex-shrink-0 flex flex-col items-center group"
+                  className="flex-shrink-0 flex flex-col items-center group skill-icon-wrap"
                 >
                   <div
                     className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-card to-card/80 rounded-xl border border-border/50 flex items-center justify-center shadow-sm hover:shadow-lg transition-all duration-300 hover:border-primary/30 backdrop-blur-sm"
@@ -493,8 +493,8 @@ const PortfolioPage = () => {
       {/* Project Modal */}
       {selectedProject && !selectedCaseStudy && (
         <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-3 sm:p-4 modal-backdrop">
-          <div className="bg-card rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto modal-content border border-border">
-            <button onClick={() => setSelectedProject(null)} className="sticky top-3 right-3 sm:top-4 sm:right-4 p-2 bg-muted rounded-full hover:bg-primary hover:text-primary-foreground transition-all z-10 flex-shrink-0" aria-label="Close modal">
+          <div className="relative bg-card rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto modal-content border border-border">
+            <button onClick={() => setSelectedProject(null)} className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 bg-muted rounded-full hover:bg-primary hover:text-primary-foreground transition-all z-10 flex-shrink-0" aria-label="Close modal">
               <X size={20} />
             </button>
             <div className="relative h-48 sm:h-64 overflow-hidden cursor-pointer group" onClick={() => setFullscreenImage(selectedProject.image)}>

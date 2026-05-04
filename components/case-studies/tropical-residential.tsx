@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { ImageViewer } from '@/components/image-viewer';
 
 export function TropicalResidentialCaseStudy() {
   return (
@@ -134,15 +133,15 @@ export function TropicalResidentialCaseStudy() {
           <div className="relative aspect-video rounded-lg overflow-hidden">
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/case_study1%20%281%29-Lvvou1WIGgTAlxJlwfkxhljnmXw5jT.jpg"
-              alt="Entrance detail 1"
+              alt="Entrance thinnai porch"
               fill
               className="object-cover"
             />
           </div>
           <div className="relative aspect-video rounded-lg overflow-hidden">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/case_study1%20%281%29-Lvvou1WIGgTAlxJlwfkxhljnmXw5jT.jpg"
-              alt="Entrance detail 2"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/case_study1%20%2812%29-tmoPMfl7KlwDEGVgBDXu1fvZmsIct8.png"
+              alt="Entrance columns detail"
               fill
               className="object-cover"
             />
@@ -256,15 +255,15 @@ export function TropicalResidentialCaseStudy() {
           <div className="relative aspect-square rounded-lg overflow-hidden">
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/case_study1%20%285%29-DbwyLbgQ8SS11tkddUYjqg2QtXIh2Z.png"
-              alt="Living room detail 1"
+              alt="Living room furniture and wall detail"
               fill
               className="object-cover"
             />
           </div>
           <div className="relative aspect-square rounded-lg overflow-hidden">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/case_study1%20%285%29-DbwyLbgQ8SS11tkddUYjqg2QtXIh2Z.png"
-              alt="Living room detail 2"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/case_study1%20%282%29-Az3RnWSWb9ZTlTj8dc8XrlmZvOMm1B.png"
+              alt="Living room overview"
               fill
               className="object-cover"
             />
@@ -282,15 +281,15 @@ export function TropicalResidentialCaseStudy() {
           <div className="relative aspect-video rounded-lg overflow-hidden">
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/case_study1%20%284%29-jFLDKPzhVxOopSC5omc2DvcolHV4En.png"
-              alt="Kitchen detail 1"
+              alt="Kitchen modular design"
               fill
               className="object-cover"
             />
           </div>
           <div className="relative aspect-video rounded-lg overflow-hidden">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/case_study1%20%284%29-jFLDKPzhVxOopSC5omc2DvcolHV4En.png"
-              alt="Kitchen detail 2"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/case_study1%20%2811%29-7dRir5YeamBnjJB6ksImsITFGYIpBI.png"
+              alt="Kitchen and dining area"
               fill
               className="object-cover"
             />
@@ -308,15 +307,15 @@ export function TropicalResidentialCaseStudy() {
           <div className="relative aspect-video rounded-lg overflow-hidden">
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/case_study1%20%283%29-VKAUpWpH2ejIwnGLqCkcQ7BLnet1RV.png"
-              alt="Master bedroom detail 1"
+              alt="Master bedroom bed and wardrobe"
               fill
               className="object-cover"
             />
           </div>
           <div className="relative aspect-video rounded-lg overflow-hidden">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/case_study1%20%283%29-VKAUpWpH2ejIwnGLqCkcQ7BLnet1RV.png"
-              alt="Master bedroom detail 2"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/case_study1%20%2814%29-xZcWy8fhsAwv8ojguitegrjFjrZe04.png"
+              alt="Master bedroom reading nook"
               fill
               className="object-cover"
             />

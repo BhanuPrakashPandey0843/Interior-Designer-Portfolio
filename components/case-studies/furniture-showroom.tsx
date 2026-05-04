@@ -222,7 +222,7 @@ export function FurnitureShowroomCaseStudy() {
           ].map((h) => (
             <div
               key={h.label}
-              className="flex items-center gap-2 bg-muted/40 hover:bg-primary/10 rounded-lg px-3 py-2.5 transition-colors duration-200 group/h"
+              className="highlight-item flex items-center gap-2 bg-muted/40 hover:bg-primary/10 rounded-lg px-3 py-2.5 transition-colors duration-200 group/h"
             >
               <span className="text-base group-hover/h:scale-110 transition-transform">{h.icon}</span>
               <span className="text-xs sm:text-sm font-medium">{h.label}</span>
@@ -313,7 +313,7 @@ export function FurnitureShowroomCaseStudy() {
           {threeDImages.map((item, index) => (
             <div
               key={item.id}
-              className="group overflow-hidden rounded-2xl bg-card border border-border/50 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer"
+              className="group overflow-hidden relative rounded-2xl bg-card border border-border/50 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer card-3d"
               style={{ animationDelay: `${index * 0.1}s` }}
               onClick={() => setFullscreenImage(item.image)}
             >
@@ -329,7 +329,7 @@ export function FurnitureShowroomCaseStudy() {
                 
                 {/* Hover Icon */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 zoom-icon-inner">
                     <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
                     </svg>

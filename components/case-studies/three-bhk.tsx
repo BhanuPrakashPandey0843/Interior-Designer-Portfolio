@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { ImageViewer } from '@/components/image-viewer';
 
 export function ThreeBHKCaseStudy() {
   return (
